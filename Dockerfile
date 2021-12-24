@@ -1,4 +1,3 @@
 FROM php:7.4-cli
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-CMD [ "php", "./your-script.php" ]
+COPY . /usr/src/app
+CMD [ "php", "/mail/contact_me.php"]
