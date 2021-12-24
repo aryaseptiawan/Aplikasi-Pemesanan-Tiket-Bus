@@ -21,16 +21,19 @@ jobs:
           php-version: 7.4
           extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml
 
-      - name: 'Login to Dockerhub'
+      - name: Login to Dockerhub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: 'Build and push'
-        run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}
-          docker push ${{ secrets.DOCKERHUB_USERNAME}}
+      
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: aryaseptiawan/UAS-aryaseptiawan:latest
+          
       - name: 'Write config'
         run: |
           mkdir ~/.oci
