@@ -62,7 +62,7 @@ jobs:
             oci compute instance list \
             --lifecycle-state RUNNING \
             --compartment-id ${{secrets.VM_COMPARTMENT_OCID}} \
-            --display-name php \
+            --display-name cicd-demo \
             --query "data [0].id" \
             --raw-output \
             )" >> $GITHUB_ENV
